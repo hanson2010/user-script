@@ -6,6 +6,9 @@
 // @version     1.0
 // @author      Hanson Hu
 // @description 3/1/2021, 11:07:05 PM
+// @homepage    https://pythoner.work
+// @icon        https://pythoner.work/favicon.ico
+// @license     MIT
 // @require     https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js
 // ==/UserScript==
 (function() {

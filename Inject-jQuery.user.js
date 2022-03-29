@@ -1,16 +1,20 @@
 // ==UserScript==
-// @name        Inject jQuery
-// @namespace   work.pythoner
-// @match       *://*baidu*/*
+// @name        Inject jQuery script
+// @namespace   Violentmonkey Scripts
+// @match       *://*.acwing.com/*
 // @grant       none
 // @version     1.0
 // @author      Hanson Hu
-// @description 3/2/2021, 9:14:09 AM
-// @icon        https://www.pythoner.work/favicon.ico
+// @description 3/29/2022, 2:20:04 PM
+// @homepage    https://pythoner.work
+// @icon        https://pythoner.work/favicon.ico
+// @license     MIT
 // ==/UserScript==
-function injectJQuery (url, callback) {
+/*
+function injectJQuery(callback) {
     var script = document.createElement('script');
     script.type = 'text/javascript';
+    script.src = 'https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js';
     if (script.readyState) {
         // ie
         script.onreadystatechange = function () {
@@ -20,11 +24,27 @@ function injectJQuery (url, callback) {
             };
         }
     } else {
-        // etc
         script.onload = function () {
             callback();
         };
     };
-    script.src = url;
     document.body.appendChild(script);
 }
+*/
+
+function injectJQuery(callback) {
+    var script = document.createElement('script');
+    script.src = 'https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js';
+    document.getElementsByTagName('head')[0].appendChild(script);
+    script.addEventListener('load', function() {
+        jQuery = unsafeWindow['jQuery'];
+        jQuery.noConflict();
+        callback();
+    }, false);
+}
+
+function callback() {
+    alert('called');
+}
+
+injectJQuery(callback);
