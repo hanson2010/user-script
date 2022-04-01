@@ -34,6 +34,6 @@ function onClick() {
 
     $('#1024-activity').remove();
 
-    let elem = $('<div style='position: absolute; top: 12px; right: 12px;'>' + getToday() + '</div>');
-    $('body').append(elem);
+    let elem = $('<div style="position: absolute; top: 2px; right: 2px; font-family: Bahnschrift, Trebuchet MS, sans-serif; font-weight: lighter; font-stretch: condensed; font-size: 24px;">' + getToday() + '</div>');
+    $("body").append(elem);
 }
