@@ -3,7 +3,7 @@
 // @namespace   work.pythoner
 // @match       *://*.acwing.com/*
 // @grant       GM_registerMenuCommand
-// @version     1.0
+// @version     1.1
 // @author      Hanson Hu
 // @description 3/28/2022, 2:18:11 PM
 // @homepage    https://pythoner.work
