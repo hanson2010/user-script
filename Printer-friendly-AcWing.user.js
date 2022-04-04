@@ -3,7 +3,7 @@
 // @namespace   work.pythoner
 // @match       *://*.acwing.com/*
 // @grant       GM_registerMenuCommand
-// @version     1.1
+// @version     1.2
 // @author      Hanson Hu
 // @description 3/28/2022, 2:18:11 PM
 // @homepage    https://pythoner.work
@@ -23,6 +23,7 @@ function onClick() {
     $('.nav').remove();
     $('.base_body').css('padding-top', '0');
     $('.panel').css('border', '0');
+    $(".file-explorer-main-field-item").remove();
     $('.fs-gui-taskbar').remove();
     $('#code_tool_bar').remove();
     $('#code_editor').remove();
