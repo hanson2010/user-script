@@ -3,18 +3,19 @@
 // @namespace   work.pythoner
 // @match       *://*.acwing.com/*
 // @grant       GM_registerMenuCommand
-// @version     1.2
+// @version     1.3
 // @author      Hanson Hu
 // @description 3/28/2022, 2:18:11 PM
-// @homepage    https://pythoner.work
-// @icon        https://pythoner.work/favicon.ico
+// @homepage    https://blog.pythoner.work
+// @icon        https://blog.pythoner.work/favicon.ico
 // @license     MIT
 // ==/UserScript==
 
 GM_registerMenuCommand('Amend the page', onClick);
 
 function getToday() {
-    let ret = new Date().toISOString().slice(0, 10);
+    // local tz
+    let ret = new Date().toLocaleString('sv').slice(0, 10);
     return ret;
 }
 
