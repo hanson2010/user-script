@@ -6,10 +6,11 @@
 // @version     1.0
 // @author      Hanson Hu
 // @description 3/29/2022, 2:20:04 PM
-// @homepage    https://pythoner.work
-// @icon        https://pythoner.work/favicon.ico
+// @homepage    https://blog.pythoner.work
+// @icon        https://blog.pythoner.work/favicon.ico
 // @license     MIT
 // ==/UserScript==
+
 /*
 function injectJQuery(callback) {
     var script = document.createElement('script');
