@@ -16,20 +16,28 @@ This approach is called as monkey patching, so the tools in which user scripts r
 
 ## The collection
 
-### Printer-friendly AcWing
+### AcWing Helper
+
+AcWing is an Online Judge (OJ) for OIers.
+
+This piece of user script is to help user to print the question page with a neat layout, or save a copy of the question in Markdown format.
+
+- After the menu item of **Prepare to print** is clicked, it removes all unnecessary elements and append a date to the top right corner of the page. So you will get a printer-friendly AcWing question page, which you can go directly to print it with your favorite browser.
+- After the menu item of **Show Markdown** is clicked, it create a text box for the raw string in Markdown format, and automatically copies it to your clipboard.
 
 #### The URL
 
-https://github.com/hanson2010/user-script/raw/main/Printer-friendly-AcWing.user.js
+https://github.com/hanson2010/user-script/raw/main/AcWing-Helper.user.js
 
 #### Changelog
 
-- v1.3
-  - Change UTC date to your local date
 - v1.0
-  - Initial release
+  - Prepare to print
+  - Show Markdown
 
 ### Printer-friendly Taiwan Media
+
+This user script removes all irrelevant elements, such as advertisements and buttons, with the piece of news you are browsing.
 
 #### The URL
 
