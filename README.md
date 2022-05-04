@@ -35,6 +35,21 @@ https://github.com/hanson2010/user-script/raw/main/AcWing-Helper.user.js
   - Prepare to print
   - Show Markdown
 
+### Show Markdown
+
+  This user script add buttons to show source text for Markdown-rendered webpages.
+
+  #### The URL
+
+  https://github.com/hanson2010/user-script/raw/main/Show-Markdown.user.js
+
+  #### Changelog
+
+  - v1.0
+    - Tested with two websites
+      - [AcWing](https://www.acwing.com/problem/)
+      - [计蒜客](https://nanti.jisuanke.com/oi)
+
 ### Printer-friendly Taiwan Media
 
 This user script removes all irrelevant elements, such as advertisements and buttons, with the piece of news you are browsing.
