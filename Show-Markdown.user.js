@@ -3,13 +3,17 @@
 // @namespace   work.pythoner
 // @match       *://*acwing.com/*
 // @match       *://*jisuanke.com/*
+// @match       *://*leetcode.cn/*
+// @match       *://*luogu.com.cn/*
+// @match       *://*segmentfault.com/*
+// @match       *://*/*blog*
 // @match       *://*/*post*
 // @match       *://*/*problem*
 // @require     https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js
 // @require     https://cdn.jsdelivr.net/npm/showdown@2.1.0/dist/showdown.min.js
 // @run-at      document-idle
 // @grant       GM_setClipboard
-// @version     1.0
+// @version     1.1
 // @author      Hanson Hu
 // @description 5/4/2022, 6:12:01 PM
 // @homepage    https://blog.pythoner.work
@@ -24,7 +28,8 @@
         $('h1,h2,h3,h4,p,pre').each(function() {
             let parent = $(this).parent();
             if ((!old || parent.get(0) != old.get(0)) &&
-                parent.children('h1,h2,h3,h4,p,pre').length >= 2) {
+                parent.children('h1,h2,h3,h4,p,pre').length >= 2  &&
+                parent.children('div:visible').length == 0) {
                 ret.push(parent);
                 old = parent;
             }
@@ -36,6 +41,9 @@
         // Clean up
         let doc = document.createElement('div');
         doc.innerHTML = src;
+        // segmentfault
+        for (const e of doc.querySelectorAll('.widget-codetool'))
+            e.remove();
         // MathJax (AcWing)
         for (const e of doc.querySelectorAll('.MathJax_Preview,.MathJax'))
             e.remove();
@@ -44,7 +52,8 @@
             e.remove();
         let text = cleanDomTree(doc, escape);
         // Remove redundant tags and "copy" buttons
-        text = text.replace(/<span.*?>/gi, '')
+        text = text.replace(/<!--\s*-->\s*/gi, '')
+                   .replace(/<span.*?>/gi, '')
                    .replace(/<\/span>/gi, '')
                    .replace(/\s*<button.*?<\/button>\s*/gi, '');
         // MathJax
@@ -62,10 +71,10 @@
         // Image URL
         // https://github.com/showdownjs/showdown/issues/925
         // And restore line breaks
-        md = md.trim()
-               .replace(/\s*<!--\s*-->\s*/gi, '\n\n')
+        md = md.replace(/\s*<!--\s*-->\s*/gi, '\n\n')
                .replace(/]\(<(.+?)>\)/gi, ']($1)')
-               .replace(/%line-break%/gi, '  \n');
+               .replace(/%line-break%/gi, '  \n')
+               .trim();
         return md + '\n';
     }
 
@@ -111,52 +120,65 @@
     let converter = new showdown.Converter();
     converter.setFlavor('github');
 
-    let targets = getTargets();
-    targets.forEach(function(elem, index) {
-        // Prevent overlapping
-        let offset = index * 60 + 10,
-            offset2 = offset + 30;
-        $(elem).after(
-            '<div style="position: absolute; top: ' + offset + 'px; right: 20px;">' +
-            '<button class="btn-show" style="color: red; opacity: 0.2;">显示Markdown</button></div>' +
-            '<div style="position: absolute; top: ' + offset2 + 'px; right: 20px;">' +
-            '<button class="btn-copy" style="color: red; opacity: 0.2;">复制</button></div>'
-        );
-    });
+    // Wait for JS loading (力扣)
+    setTimeout(function() {
 
-    $('.btn-show').click(function() {
-        let target = $(this).parent().prev().get(0);
-        if (target.flag) {
-            target.flag = false;
-            $(this).text('显示Markdown');
-            $(target).html(target.orig);
-        } else {
-            target.flag = true;
-            if (!target.orig)
-                target.orig = $(target).html();
-            if (!target.md_html)
-                target.md_html = getMarkdown($(target).html(), true);
-            $(this).text('显示HTML');
-            $(target).html(
-                '<pre style="white-space: pre-wrap; word-wrap: break-word; ' +
-                'font-family: Consolas, monospace;">' +
-                '<code class="nohighlight" style="white-space: pre-wrap;">' +
-                target.md_html +
-                '</code></pre>'
+        let targets = getTargets();
+        targets.forEach(function(elem) {
+            let parent = elem.get(0).parentNode;
+            parent.setAttribute('style', 'position: relative;');
+            let offset = 0, offset2 = 30;
+            // Prevent overlapping
+            if (parent.cnt === undefined) {
+                parent.cnt = 1;
+            } else {
+                offset = parent.cnt * 60, offset2 = offset + 30;
+                parent.cnt ++ ;
+            }
+            $(elem).after(
+                '<div style="position: absolute; top: ' + offset + 'px; right: 0px;">' +
+                '<button class="btn-show" style="color: red; opacity: 0.2;">显示Markdown</button></div>' +
+                '<div style="position: absolute; top: ' + offset2 + 'px; right: 0px;">' +
+                '<button class="btn-copy" style="color: red; opacity: 0.2;">复制</button></div>'
             );
-        }
-    });
+        });
 
-    $('.btn-copy').click(function() {
-        let target = $(this).parent().prev().prev().get(0);
-        if (target.flag) {
-            if (!target.md)
-                target.md = getMarkdown(target.orig);
-        } else {
-            if (!target.md)
-                target.md = getMarkdown($(target).html());
-        }
-        GM_setClipboard(target.md);
-    });
+
+        $('.btn-show').click(function() {
+            let target = $(this).parent().prev().get(0);
+            if (target.flag) {
+                target.flag = false;
+                $(this).text('显示Markdown');
+                $(target).html(target.orig);
+            } else {
+                target.flag = true;
+                if (!target.orig)
+                    target.orig = $(target).html();
+                if (!target.md_html)
+                    target.md_html = getMarkdown($(target).html(), true);
+                $(this).text('显示HTML');
+                $(target).html(
+                    '<pre style="max-height: none; white-space: pre-wrap; word-wrap: break-word; ' +
+                    'font-family: Consolas, monospace;">' +
+                    '<code class="nohighlight" style="white-space: pre-wrap;">' +
+                    target.md_html +
+                    '</code></pre>'
+                );
+            }
+        });
+
+        $('.btn-copy').click(function() {
+            let target = $(this).parent().prev().prev().get(0);
+            if (target.flag) {
+                if (!target.md)
+                    target.md = getMarkdown(target.orig);
+            } else {
+                if (!target.md)
+                    target.md = getMarkdown($(target).html());
+            }
+            GM_setClipboard(target.md);
+        });
+
+    }, 2000);
 
 })();

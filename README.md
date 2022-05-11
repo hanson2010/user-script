@@ -37,18 +37,23 @@ https://github.com/hanson2010/user-script/raw/main/AcWing-Helper.user.js
 
 ### Show Markdown
 
-  This user script add buttons to show source text for Markdown-rendered webpages.
+This user script add buttons to show source text for Markdown-rendered webpages.
 
-  #### The URL
+#### The URL
 
-  https://github.com/hanson2010/user-script/raw/main/Show-Markdown.user.js
+https://github.com/hanson2010/user-script/raw/main/Show-Markdown.user.js
 
-  #### Changelog
+#### Changelog
 
-  - v1.0
-    - Tested with two websites
-      - [AcWing](https://www.acwing.com/problem/)
-      - [计蒜客](https://nanti.jisuanke.com/oi)
+- v1.1
+  - Support more websites
+    - [SegmentFault](https://segmentfault.com/blogs)
+    - [力扣](https://leetcode.cn/problemset/all/)
+    - [洛谷](https://www.luogu.com.cn/problem/list)
+- v1.0
+  - Tested with two websites
+    - [AcWing](https://www.acwing.com/problem/)
+    - [计蒜客](https://nanti.jisuanke.com/oi)
 
 ### Printer-friendly Taiwan Media
 
