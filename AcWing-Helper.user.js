@@ -6,7 +6,7 @@
 // @run-at      document-end
 // @grant       GM_registerMenuCommand
 // @grant       GM_setClipboard
-// @version     1.0
+// @version     1.1
 // @author      Hanson Hu
 // @description 4/29/2022, 1:09:11 PM
 // @homepage    https://blog.pythoner.work
@@ -29,6 +29,8 @@
         $('.panel').css('border', '0');
         $(".file-explorer-main-field-item").remove();
         $('.fs-gui-taskbar').remove();
+        $('.btn-success').remove();
+        $('.btn-default').remove();
         $('#code_tool_bar').remove();
         $('#code_editor').remove();
         $('#submit_code_btn').remove();
