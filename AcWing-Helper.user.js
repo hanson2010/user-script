@@ -1,17 +1,19 @@
 // ==UserScript==
-// @name        AcWing Helper
-// @namespace   work.pythoner
-// @match       *://*.acwing.com/*
-// @require     https://cdn.jsdelivr.net/npm/showdown@2.1.0/dist/showdown.min.js
-// @run-at      document-end
-// @grant       GM_registerMenuCommand
-// @grant       GM_setClipboard
-// @version     1.1
-// @author      Hanson Hu
-// @description 4/29/2022, 1:09:11 PM
-// @homepage    https://blog.pythoner.work
-// @icon        https://blog.pythoner.work/favicon.ico
-// @license     MIT
+// @name              AcWing Helper
+// @name:zh-CN        AcWing Helper
+// @description       Print elegantly | Show Markdown | Automatically save to clipboard
+// @description:zh-CN 优雅打印 | 显示Markdown | 自动存入剪贴板
+// @namespace         work.pythoner
+// @match             *://*.acwing.com/*
+// @require           https://cdn.jsdelivr.net/npm/showdown@2.1.0/dist/showdown.min.js
+// @run-at            document-end
+// @grant             GM_registerMenuCommand
+// @grant             GM_setClipboard
+// @version           1.2
+// @author            Hanson Hu
+// @homepage          https://blog.pythoner.work
+// @icon              https://blog.pythoner.work/favicon.ico
+// @license           MIT
 // ==/UserScript==
 
 (function() {
@@ -40,6 +42,8 @@
         $('hr').remove();
 
         $('#1024-activity').remove();
+
+        $('.problem-content-title').html(title);
 
         let elem = $('<div style="position: absolute; top: 2px; right: 2px; ' +
                      'font-family: Bahnschrift, Trebuchet MS, sans-serif; ' +
