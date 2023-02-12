@@ -31,9 +31,30 @@ https://github.com/hanson2010/user-script/raw/main/AcWing-Helper.user.js
 
 #### Changelog
 
+- v1.2
+  - Add prefix `ACW`
+- v1.1
+  - Remove two more buttons  
 - v1.0
   - Prepare to print
   - Show Markdown
+
+### CodeForces Helper
+
+CodeForces is an Online Judge (OJ) for OIers.
+
+This piece of user script is to help user to print the question page with a neat layout.
+
+After the menu item of **Prepare to print** is clicked, it removes all unnecessary elements and append a date to the top right corner of the page. So you will get a printer-friendly CodeForces question page, which you can go directly to print it with your favorite browser.
+
+#### The URL
+
+https://github.com/hanson2010/user-script/raw/main/CodeForces-Helper.user.js
+
+#### Changelog
+
+- v1.0
+  - Initial version
 
 ### Show Markdown
 

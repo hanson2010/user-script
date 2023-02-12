@@ -27,9 +27,7 @@
     function onClickPrint() {
         $('.navbar').remove();
         $('.nav').remove();
-        $('.base_body').css('padding-top', '0');
-        $('.panel').css('border', '0');
-        $(".file-explorer-main-field-item").remove();
+        $('.file-explorer-main-field-item').remove();
         $('.fs-gui-taskbar').remove();
         $('.btn-success').remove();
         $('.btn-default').remove();
@@ -38,12 +36,15 @@
         $('#submit_code_btn').remove();
         $('#run_code_btn').remove();
         $('#acwing_footer').remove();
+        $('#1024-activity').remove();
         $('br').remove();
         $('hr').remove();
 
-        $('#1024-activity').remove();
+        $('.base_body').css('padding-top', '0px');
+        $('.panel').css('border', '0px');
+        $('.problem-content-title').css('padding-left', '1rem');
 
-        $('.problem-content-title').html(title);
+        $('.problem-content-title').text(title);
 
         let elem = $('<div style="position: absolute; top: 2px; right: 2px; ' +
                      'font-family: Bahnschrift, Trebuchet MS, sans-serif; ' +
@@ -53,7 +54,6 @@
                      '</div>');
         $('body').append(elem);
     }
-
 
     function onClickMarkdown() {
         let temp = '# ' + title + '\n\n' + md;
@@ -70,7 +70,7 @@
     GM_registerMenuCommand('Prepare to print', onClickPrint);
     GM_registerMenuCommand('Show Markdown', onClickMarkdown);
 
-    let title = 'AcWing-' + $('.problem-content-title').html().trim(),
+    let title = 'ACW' + $('.problem-content-title').text().trim(),
         text = $('.martor-preview').html().trim();
     text = text
                // Avoid the bug of showdown dealing with <br />
