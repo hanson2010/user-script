@@ -39,6 +39,25 @@ https://github.com/hanson2010/user-script/raw/main/AcWing-Helper.user.js
   - Prepare to print
   - Show Markdown
 
+### Luogu Helper
+
+Luogu is an Online Judge (OJ) for OIers.
+
+This piece of user script is to help user to print the question page with a neat layout.
+
+- It shows **CodeForces difficulty** if the problem comes from CodeForces.
+- After the menu item of **Prepare to print** is clicked, it removes all unnecessary elements and append a date to the top right corner of the page. So you will get a printer-friendly Luogu question page, which you can go directly to print it with your favorite browser.
+- After the menu item of **Purge cache** is clicked, it purges outdated difficulty values from cache.
+
+#### The URL
+
+https://github.com/hanson2010/user-script/raw/main/Luogu-Helper.user.js
+
+#### Changelog
+
+- v1.0
+  - Initial version
+
 ### CodeForces Helper
 
 CodeForces is an Online Judge (OJ) for OIers.
