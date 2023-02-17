@@ -86,8 +86,11 @@ jQuery(document).ready(function() {
 
     function showDifficulty() {
         let cfd = getCFDifficulty();
-        if (cfd) difficulty = cfd + '/' + difficulty;
-        jQuery('.side a[href^="/problem/list?difficulty="] span').text(difficulty);
+        if (cfd && !flag) {
+            difficulty = cfd + '/' + difficulty;
+            flag = true;
+            jQuery('.side a[href^="/problem/list?difficulty="] span').text(difficulty);
+        }
     }
 
     function getDeferredValue() {
@@ -144,7 +147,7 @@ jQuery(document).ready(function() {
     GM_registerMenuCommand('Purge cache', onClickPurgeCache);
 
     const CACHE_LIFESPAN = 30 * 86400 * 1000;
-    let pnum, title, problem, difficulty;
+    let pnum, title, problem, difficulty, flag = false;
     // Luogu load content lazily
     setTimeout(getDeferredValue, 1000);
     // update asynchronous result
